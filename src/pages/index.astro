@@ -11,10 +11,12 @@ import Github from "../components/Icons/Github.astro";
   <NavBar />
   <SectionContainer class="my-24" id="Home">
     <img
-      class="object-cover w-20 h-20 rounded-full"
-      src="https://media.discordapp.net/attachments/1287833657695801368/1300572751966376027/20240525_164807.png?ex=67215443&is=672002c3&hm=54388e4cbceea535089318101ac26601dde27029d021d3c13a74e237f803218e&=&format=webp&quality=lossless&width=263&height=350"
+      loading="lazy"
+      class="object-cover w-20 h-20 rounded-full relative"
+      src="/images/homeAvatar.webp"
       alt="personal-image"
     />
+
     <div class="space-y-4 flex-1 max-w-2xl my-3">
       <h2 class="text-2xl font-bold text-neutral-300">I craft interfaces</h2>
       <p class="text-neutral-400">
@@ -30,7 +32,7 @@ import Github from "../components/Icons/Github.astro";
   </SectionContainer>
   <SectionContainer class="my-28">
     <h1 class="text-xl text-neutral-300 font-medium">Selected projects</h1>
-    <Projects />
+    <Projects class="my-5" />
   </SectionContainer>
 </Layout>
 <style>
