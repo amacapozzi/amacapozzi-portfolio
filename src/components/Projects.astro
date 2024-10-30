@@ -1,82 +1,103 @@
 ---
-import LinkButton from "../components/LinkItem.astro";
+interface Project {
+  icon: string
+  name: string
+  description: string
+  technologies: string[]
+  githubUrl: string
+  url: string
+}
 
-const TAGS = {
-  NEXT: {
-    name: "Next.js",
-    class: "bg-black text-white",
-    icon: "",
-  },
-  TAILWIND: {
-    name: "Tailwind CSS",
-    class: "bg-[#003159] text-white",
-    icon: "",
-  },
-};
-const PROJECTS = [
+const projects: Project[] = [
   {
-    title: "SVGL - A beautiful library with SVG logos",
-    description:
-      "Biblioteca de logos SVG de las marcas más populares. +10k visitas al mes. +2K svgs descargados. Creado desde cero con Next.js, React y Tailwind CSS.",
-    link: "https://svgl.vercel.app/",
-    github: "https://github.com/pheralb/svgl",
-    image: "/projects/svgl.webp",
-    tags: [TAGS.NEXT, TAGS.TAILWIND],
+    icon: "🍞",
+    name: "toast",
+    description: "A beautiful notification library for React.",
+    technologies: ["Turborepo", "Library", "Astro", "MDX"],
+    githubUrl: "#",
+    url: "#",
   },
   {
-    title: "AdventJS - Retos de programación con JavaScript y TypeScript",
-    description:
-      "Plataforma gratuita con retos de programación. Más de 1 millón de visitas en un mes. +50K retos completados. Creada desde cero con Next.js, React y Tailwind CSS.",
-    link: "https://adventjs.dev",
-    image: "/projects/adventjs.webp",
-    tags: [TAGS.NEXT, TAGS.TAILWIND],
+    icon: "🦕",
+    name: "slug",
+    description: "An open-source URL shortener.",
+    technologies: ["Next.js", "T3 Stack", "Turso", "shadcn/ui"],
+    githubUrl: "#",
+    url: "#",
   },
-];
+  {
+    icon: "✨",
+    name: "svgl",
+    description: "A beautiful library with SVG logos.",
+    technologies: ["Sveltekit", "Typescript", "SVGs", "Tailwind"],
+    githubUrl: "#",
+    url: "#",
+  },
+  {
+    icon: "📝",
+    name: "typethings",
+    description: "A modern, minimal markdown editor.",
+    technologies: ["Tauri", "Turborepo", "Tailwind", "Tiptap"],
+    githubUrl: "#",
+    url: "#",
+  },
+  {
+    icon: "✨",
+    name: "react-symbols",
+    description: "Symbols Icons for React.",
+    technologies: ["Remix", "Typescript", "Turborepo", "Tailwind"],
+    githubUrl: "#",
+    url: "#",
+  },
+  {
+    icon: "🏆",
+    name: "project-hackathon",
+    description: "An open-source hackathon management.",
+    technologies: ["Next.js", "Tailwind", "tRPC", "Prisma"],
+    githubUrl: "#",
+    url: "#",
+  },
+]
 ---
 
-<div class="flex flex-col gap-y-16 my-14">
-  {
-    PROJECTS.map(({ image, title, description, tags, link, github }) => (
-      <article class="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0">
-        <div class="w-full md:w-1/2">
-          <div class="relative flex  flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
-            <img
-              alt="Recién llegado vs 5 años en Nueva Zelanda"
-              class="object-cover object-top w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105"
-              loading="lazy"
-              src={image}
-            />
-          </div>
-        </div>
-
-        <div class="w-full md:w-1/2 md:max-w-lg px-6 py-4 border border-gray-600/20 rounded-xl relative overflow-hidden">
-          <div class="absolute w-40 bg-opacity-30 h-20 blur-[70px] bg-white/20 top-5 left-0 ml-5" />
-          <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100">
-            {title}
-          </h3>
-          <div class="flex flex-wrap mt-2">
-            <ul class="flex flex-row mb-2 gap-x-2">
-              {tags.map((tag) => (
-                <li>
+    <section class="w-full my-7">
+     
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {projects.map((project) => (
+            <div
+             
+              class="p-6 bg-muted/50 border border-gray-600/20 rounded-lg hover:bg-muted/80 transition-colors border-muted"
+            >
+              <div class="flex items-start justify-between">
+                <div class="space-y-1">
+                  <div class="flex items-center gap-2">
+                    <span class="text-2xl">{project.icon}</span>
+                    <a
+                      href={project.url}
+                      class="text-lg font-semibold hover:underline inline-flex items-center gap-2"
+                    >
+                      {project.name}
+                     
+                    </a>
+                  </div>
+                  <p class="text-sm text-muted-foreground">{project.description}</p>
+                </div>
+                <a href={project.githubUrl}>
+                  
+                </a>
+              </div>
+              <div class="flex flex-wrap gap-2 mt-4">
+                {project.technologies.map((tech) => (
                   <span
-                    class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 `}
+                  
+                    class="px-2 py-1 text-xs rounded-md bg-background hover:bg-accent transition-colors"
                   >
-                    {tag.name}
+                    {tech}
                   </span>
-                </li>
-              ))}
-            </ul>
-
-            <div class="mt-2 text-gray-700 dark:text-gray-400">
-              {description}
+                ))}
+              </div>
             </div>
-            <footer class="flex items-end justify-start mt-4 gap-x-4">
-              {github && <LinkButton href={github}>Code</LinkButton>}
-              {link && <LinkButton href={link}>Preview</LinkButton>}
-            </footer>
-          </div>
+          ))}
         </div>
-      </article>
-    ))
-  }
-</div>
+      </div>
+    </section>
