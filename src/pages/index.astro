@@ -5,6 +5,7 @@ import LinkItem from "../components/LinkItem.astro";
 import Projects from "../components/Projects.astro";
 import SectionContainer from "../components/SectionContainer.astro";
 import Github from "../components/Icons/Github.astro";
+import Experience from "../components/Experience.astro";
 ---
 
 <Layout title="Amadeo Mosquera Capozzi">
@@ -25,8 +26,12 @@ import Github from "../components/Icons/Github.astro";
       </LinkItem>
     </div>
   </SectionContainer>
-  <SectionContainer class="md:my-24 my-20 md:px-0 px-3">
-    <h1 class="text-xl text-white font-medium">Selected projects</h1>
+  <SectionContainer class="md:mt-24 mt-20 md:px-0 px-3">
+    <h1 class="text-xl text-neutral-200 font-medium">Selected projects</h1>
     <Projects class="my-5" />
+  </SectionContainer>
+  <SectionContainer class="mt-10">
+    <h1 class="text-xl text-neutral-200 font-medium">Experience</h1>
+    <Experience class="my-5" />
   </SectionContainer>
 </Layout>

@@ -1,0 +1,53 @@
+---
+interface Experience {
+  startDate: string;
+  endDate: string;
+  role: string;
+  about: string;
+}
+
+const experienceData: Experience[] = [
+  {
+    startDate: "2020",
+    endDate: "2024",
+    role: "Software Developer",
+    about:
+      "Desde los 14 años, comencé a explorar el desarrollo de aplicaciones, lo que despertó en mí una profunda pasión por la informática y la programación. Mi formación ha sido principalmente autodidacta, dedicando tiempo a aprender y mejorar mis habilidades en diversas áreas del desarrollo de software. A lo largo de mi experiencia, he creado aplicaciones y proyectos que me han permitido profundizar en diferentes tecnologías y metodologías. Mi objetivo es seguir creciendo en el campo, contribuyendo con soluciones innovadoras y eficientes que marquen una diferencia.",
+  },
+];
+---
+
+<section class="flex flex-col space-y-4 my-7">
+  <ol
+    class="relative space-y-6 border-s-2 border-neutral-300 dark:border-neutral-800"
+  >
+    {
+      experienceData.map((exp) => (
+        <li class="ms-5 mt-1">
+          <div
+            class={
+              "absolute -start-[6.5px] mt-2 h-3 w-3 rounded-full border border-neutral-400 bg-neutral-200 dark:border-neutral-600 dark:bg-neutral-800"
+            }
+          />
+          <time class="mb-2 font-mono text-xs font-normal leading-none text-neutral-600 dark:text-neutral-400">
+            {exp.startDate} - {exp.endDate}
+          </time>
+          <div class="mt-2 flex flex-col space-y-0.5">
+            <h3 class="text-lg font-semibold tracking-tight text-gray-900 dark:text-white">
+              {exp.role}
+            </h3>
+            <a
+              href={""}
+              target="_blank"
+              rel="noopener"
+              class="group flex w-max items-center text-pretty text-sm text-neutral-600 transition-colors duration-150 hover:text-black dark:border-neutral-800 dark:text-neutral-400 dark:hover:text-white"
+            ></a>
+          </div>
+          <p class="mt-3 text-pretty text-sm dark:text-neutral-400">
+            {exp.about}
+          </p>
+        </li>
+      ))
+    }
+  </ol>
+</section>
