@@ -1,8 +1,13 @@
 ---
 import Github from "./Icons/Github.astro";
+import JavaScript from "./Icons/JavaScript.astro";
 import LinkIcon from "./Icons/Link.astro";
+import Cat from "./Icons/Cat.astro";
+import Music from "./Icons/Music.astro";
+import Youtube from "./Icons/Youtube.astro";
 interface Project {
-  icon: string;
+  icon: any;
+  svg: boolean;
   name: string;
   description: string;
   technologies: string[];
@@ -13,6 +18,7 @@ interface Project {
 const projects: Project[] = [
   {
     icon: "🍞",
+    svg: false,
     name: "registry-analyzer",
     description: "Analyzes system logs and scans them.",
     technologies: ["C#", "Virus total API"],
@@ -22,42 +28,50 @@ const projects: Project[] = [
   {
     icon: "🦕",
     name: "memory-reader",
+    svg: false,
     description: "Scans process memory and passes it to string.",
     technologies: ["C#"],
     githubUrl: "https://github.com/amacapozzi/memory-reader",
     url: "https://github.com/amacapozzi/memory-reader",
   },
   {
-    icon: "✨",
+    icon: Cat,
+    svg: true,
     name: "github-repo-analysis",
-    description: "Analyzes the users github repositories and scans them for anomalies.",
-    technologies: ["Typescript", "Virus Total API"],
+    description:
+      "Analyzes the users github repositories and scans them for anomalies.",
+    technologies: ["Typescript", "Virus Total API", "React", "Vite"],
     githubUrl: "https://github.com/amacapozzi/github-repo-analysis",
     url: "https://github.com/amacapozzi/github-repo-analysis",
   },
   {
-    icon: "📝",
+    icon: Youtube,
+    svg: true,
     name: "youtube-downloader",
-    description: "Download a video from youtube with the URL and convert it to a chosen format.",
-    technologies: ["Typescript", "ytdl"],
+    description:
+      "Download a video from youtube with the URL and convert it to a chosen format.",
+    technologies: ["Typescript", "ytdl", "React", "Vite"],
     githubUrl: "https://github.com/amacapozzi/youtube-video-downloader",
     url: "https://github.com/amacapozzi/youtube-video-downloader",
   },
   {
-    icon: "✨",
-    name: "react-symbols",
-    description: "Symbols Icons for React.",
-    technologies: ["Remix", "Typescript", "Turborepo", "Tailwind"],
-    githubUrl: "#",
-    url: "#",
+    icon: JavaScript,
+    svg: true,
+    name: "javascript-playground",
+    description: "A simple Javascript And TypeScript playground tu run code.",
+    technologies: ["Typescript", "TurboPack", "Tailwind"],
+    githubUrl:
+      "https://github.com/amacapozzi/javascript-and-typescript-playground",
+    url: "https://github.com/amacapozzi/javascript-and-typescript-playground",
   },
   {
-    icon: "🏆",
-    name: "project-hackathon",
-    description: "An open-source hackathon management.",
-    technologies: ["Next.js", "Tailwind", "tRPC", "Prisma"],
-    githubUrl: "#",
-    url: "#",
+    icon: Music,
+    svg: true,
+    name: "music-app",
+    description: "Very simple application to listen, stop and queue music.",
+    technologies: ["Vite", "Tailwind", "React"],
+    githubUrl: "https://github.com/amacapozzi/simple-music-app",
+    url: "https://github.com/amacapozzi/simple-music-app",
   },
 ];
 ---
@@ -70,7 +84,11 @@ const projects: Project[] = [
           <div class="flex items-start justify-between">
             <div class="space-y-1">
               <div class="flex items-center gap-2">
-                <span class="text-2xl">{project.icon}</span>
+                {project.svg ? (
+                  <project.icon class="w-4 h-4" />
+                ) : (
+                  <span class="text-xl">{project.icon}</span>
+                )}
                 <a
                   href={project.url}
                   class="text-lg font-semibold text-white tracking-tighter hover:underline inline-flex items-center gap-2"
@@ -83,7 +101,7 @@ const projects: Project[] = [
             </div>
             <a
               class="p-1 bg-black/50 border border-gray-600 rounded-full"
-              href=""
+              href={project.githubUrl}
             >
               <Github class="h-4 w-4 text-neutral-300" />
             </a>
